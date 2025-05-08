@@ -1,0 +1,58 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Palindrome Checker</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 30px;
+      background: #f9fafb;
+    }
+    input, button {
+      padding: 8px 16px;
+      margin: 10px 0;
+      font-size: 16px;
+    }
+    #result {
+      margin-top: 20px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Verificador de Palíndromos</h1>
+
+  <input id="text-input" type="text" placeholder="Digite um texto" />
+  <button id="check-btn">Verificar</button>
+  <div id="result"></div>
+
+  <script>
+    const input = document.getElementById("text-input");
+    const button = document.getElementById("check-btn");
+    const result = document.getElementById("result");
+
+    button.addEventListener("click", () => {
+      const value = input.value;
+
+      if (!value) {
+        alert("Please input a value");
+        return;
+      }
+
+      const original = value;
+      const clean = value.toLowerCase().replace(/[^a-z0-9]/gi, "");
+      const reversed = clean.split("").reverse().join("");
+
+      if (clean === reversed) {
+        result.textContent = `${original} is a palindrome.`;
+      } else {
+        result.textContent = `${original} is not a palindrome.`;
+      }
+    });
+  </script>
+</body>
+</html>
